@@ -66,6 +66,12 @@ class PersonController @Inject()(repo: PersonRepository,
       Ok(Json.toJson(people))
     }
   }
+
+  def showList(page: Long) = Action.async { implicit request =>
+    repo.list().map { people =>
+      Ok(views.html.list(people))
+    }
+  }
 }
 
 /**

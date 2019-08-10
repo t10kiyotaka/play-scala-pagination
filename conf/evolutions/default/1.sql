@@ -5,6 +5,27 @@ create table "people" (
   "name" varchar not null,
   "age" int not null
 );
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+insert into "people" values (default, 'hoge', 20);
+
 
 # --- !Downs
 

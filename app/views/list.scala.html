@@ -1,0 +1,11 @@
+@(persons: Seq[Person])
+
+@main("Welcome to Play") {
+  <div>Person List
+    <ul>
+      @for(person <- persons) {
+        <li>person id: @{person.id}</li>
+      }
+    </ul>
+  </div>
+}

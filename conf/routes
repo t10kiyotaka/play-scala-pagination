@@ -6,6 +6,7 @@
 GET     /                           controllers.PersonController.index
 POST    /person                     controllers.PersonController.addPerson
 GET     /persons                    controllers.PersonController.getPersons
+GET     /list                       controllers.PersonController.showList(page: Long?= 1L)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
