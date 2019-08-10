@@ -1,4 +1,4 @@
-@(persons: Seq[Person])
+@(persons: Seq[Person], paging: Paging)
 
 @main("Welcome to Play") {
   <div>Person List
@@ -7,5 +7,20 @@
         <li>person id: @{person.id}</li>
       }
     </ul>
+  </div>
+
+@*  Pagination  *@
+  <div>
+    @if(!paging.isFirst) {
+      <a href="@controllers.routes.PersonController.showList(1L)">1</a>
+    }
+
+    @paging.page
+
+    @if(!paging.isLast) {
+      <a href="@controllers.routes.PersonController.showList(paging.lastPage)">
+        @paging.lastPage
+      </a>
+    }
   </div>
 }

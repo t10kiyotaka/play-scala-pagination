@@ -69,8 +69,13 @@ class PersonController @Inject()(repo: PersonRepository,
 
   def showList(page: Long) = Action.async { implicit request =>
     val cursor = Cursor()
-    repo.listWithCursor(cursor).map { people =>
-      Ok(views.html.list(people))
+    val limitPerPage = 2
+    for {
+      allPeople <- repo.list()
+      people <- repo.listWithCursor(cursor)
+    } yield {
+      val paging = Paging(page, people.length, allPeople.length, limitPerPage)
+      Ok(views.html.list(people, paging))
     }
   }
 }

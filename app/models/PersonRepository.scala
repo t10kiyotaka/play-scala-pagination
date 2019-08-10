@@ -80,7 +80,7 @@ class PersonRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
   def listWithCursor(cur: Cursor): Future[Seq[Person]] = db.run {
     people
       .drop(cur.offset.getOrElse(0L))
-      .take(cur.limit.getOrElse(10L))
+      .take(cur.limit.getOrElse(10L)) // TODO if None take all
       .result
   }
 }
