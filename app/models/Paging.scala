@@ -1,10 +1,10 @@
 package models
 
 case class Paging(
-  page: Long,
+  page:                Long,
   itemCountOfThisPage: Long,
-  totalCount: Long,
-  limitPerPage: Long
+  totalCount:          Long,
+  limitPerPage:        Long
 ) {
   val prevPage: Long = page - 1
   val nextPage: Long = page + 1
