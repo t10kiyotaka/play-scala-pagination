@@ -67,9 +67,11 @@ class PersonController @Inject()(repo: PersonRepository,
     }
   }
 
+  val limitPerPage = 2L
   def showList(page: Long) = Action.async { implicit request =>
-    val cursor = Cursor()
-    val limitPerPage = 2
+    val offset = Math.max(0L, (page - 1) * limitPerPage)
+    val cursor = Cursor(offset, Some(page * limitPerPage))
+
     for {
       allPeople <- repo.list()
       people <- repo.listWithCursor(cursor)

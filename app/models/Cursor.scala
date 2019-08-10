@@ -1,3 +1,3 @@
 package models
 
-case class Cursor(offset: Option[Long] = None, limit: Option[Long] = None)
+case class Cursor(offset: Long = 0L, limit: Option[Long] = None)

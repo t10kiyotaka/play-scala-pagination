@@ -6,6 +6,9 @@ case class Paging(
   totalCount: Long,
   limitPerPage: Long
 ) {
+  val prevPage: Long = page - 1
+  val nextPage: Long = page + 1
+
   def lastPage: Long =
     Math.ceil(totalCount / limitPerPage).toLong
 
