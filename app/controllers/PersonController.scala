@@ -68,7 +68,8 @@ class PersonController @Inject()(repo: PersonRepository,
   }
 
   def showList(page: Long) = Action.async { implicit request =>
-    repo.list().map { people =>
+    val cursor = Cursor()
+    repo.listWithCursor(cursor).map { people =>
       Ok(views.html.list(people))
     }
   }

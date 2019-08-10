@@ -1,10 +1,10 @@
 package models
 
-import javax.inject.{ Inject, Singleton }
+import javax.inject.{Inject, Singleton}
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
 
-import scala.concurrent.{ Future, ExecutionContext }
+import scala.concurrent.{ExecutionContext, Future}
 
 /**
  * A repository for people.
@@ -74,5 +74,13 @@ class PersonRepository @Inject() (dbConfigProvider: DatabaseConfigProvider)(impl
    */
   def list(): Future[Seq[Person]] = db.run {
     people.result
+  }
+
+
+  def listWithCursor(cur: Cursor): Future[Seq[Person]] = db.run {
+    people
+      .drop(cur.offset.getOrElse(0L))
+      .take(cur.limit.getOrElse(10L))
+      .result
   }
 }
