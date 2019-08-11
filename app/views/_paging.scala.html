@@ -1,0 +1,43 @@
+@(paging: Paging, url: Call)
+
+<div>
+  @if(paging.hasPrev) {
+    <a href="@controllers.routes.PersonController.showList(paging.prevPage)">
+      <<
+    </a>
+  }
+
+  @if(!paging.isFirst) {
+    <a href="@controllers.routes.PersonController.showList(1L)">1</a>
+  }
+
+  @if(paging.page > 6) { ... }
+
+  @for(i <- 2 until paging.page.toInt) {
+    @if(i > paging.page - 5) {
+      <a href="@controllers.routes.PersonController.showList(i)">@i</a>
+    }
+  }
+
+  @paging.page
+
+  @for(i <- paging.page.toInt + 1 until paging.lastPage.toInt) {
+    @if(i < paging.page + 5) {
+      <a href="@controllers.routes.PersonController.showList(i)">@i</a>
+    }
+  }
+
+  @if(paging.lastPage - paging.page > 5) { ... }
+
+  @if(!paging.isLast) {
+    <a href="@controllers.routes.PersonController.showList(paging.lastPage)">
+    @paging.lastPage
+    </a>
+  }
+
+  @if(paging.hasNext) {
+    <a href="@controllers.routes.PersonController.showList(paging.nextPage)">
+      >>
+    </a>
+  }
+</div>
